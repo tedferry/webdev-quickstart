@@ -1,19 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
+    host: '0.0.0.0',
+    port: 8080,
     contentBase: './dist'
   },
   entry: './src/index.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
   module: {
     rules: [
       {
@@ -37,7 +34,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       title: 'Webdev Quickstart'
